@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Infinity Studios Lush</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4A359',
+                            goldLight: '#ECC880',
+                            goldLighter: '#F6E3B4',
+                            goldDark: '#9A6D2C',
+                            dark: '#080808',
+                            cardDark: '#121212',
+                            cardDeep: '#161616',
+                            cream: '#FAF7F2',
+                            borderDark: '#262626'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F6E3B4 0%, #D4A359 50%, #9A6D2C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-btn-gradient {
+            background: linear-gradient(135deg, #ECC880 0%, #D4A359 60%, #9A6D2C 100%);
+        }
+        .gold-btn-gradient:hover {
+            background: linear-gradient(135deg, #F6E3B4 0%, #ECC880 60%, #D4A359 100%);
+        }
+
+        /* Responsive Compact Masonry Mosaic Columns */
+        .masonry-columns {
+            column-count: 2;
+            column-gap: 0.85rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-columns {
+                column-count: 3;
+                column-gap: 1.15rem;
+            }
+        }
+        @media (min-width: 1200px) {
+            .masonry-columns {
+                column-count: 4;
+                column-gap: 1.25rem;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 0.85rem;
+            transition: all 0.35s ease;
+        }
+        @media (min-width: 768px) {
+            .masonry-item {
+                margin-bottom: 1.15rem;
+            }
+        }
+
+        .masonry-item.hidden-item {
+            display: none;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #ECC880 0%, #D4A359 60%, #9A6D2C 100%);
+            color: #000000;
+            border-color: #D4A359;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-neutral-300 font-sans antialiased overflow-x-hidden selection:bg-brand-gold selection:text-black">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-black via-[#16130d] to-black border-b border-brand-gold/20 text-[11px] sm:text-xs py-2 px-3 sm:px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-2">
+            <div class="flex items-center space-x-3 sm:space-x-4 text-neutral-400">
+                <span><i class="fa-solid fa-phone text-brand-gold mr-1"></i> +91 98765 43210</span>
+                <span class="text-neutral-600">|</span>
+                <span><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Delhi NCR & Worldwide</span>
+            </div>
+            <div class="flex items-center space-x-2 sm:space-x-3 text-neutral-400">
+                <span class="text-brand-goldLight font-medium">40% Off + 2% Referral Deal</span>
+                <a href="about.html" class="underline text-brand-gold hover:text-white transition">Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-black/95 backdrop-blur-md border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 sm:h-28 md:h-32 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center space-x-2.5 sm:space-x-4 group py-1">
+                <img src="logo/logo infinity studio lush.png" alt="logo infinity studio lush" class="h-14 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(212,163,89,0.35)]">
+                <div class="flex flex-col justify-center">
+                    <span class="font-serif text-lg sm:text-2xl md:text-3xl tracking-[0.18em] text-white font-bold group-hover:text-brand-goldLight transition leading-tight">INFINITY</span>
+                    <span class="text-[9px] sm:text-xs tracking-[0.35em] text-brand-gold font-semibold uppercase">Studios Lush</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links with Dropdown -->
+            <nav class="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-widest font-medium">
+                <a href="index.html" class="text-neutral-300 hover:text-brand-gold transition pb-1">Home</a>
+                <a href="about.html" class="text-neutral-300 hover:text-brand-gold transition pb-1">About</a>
+                
+                <!-- Services Dropdown -->
+                <div class="relative group py-6">
+                    <a href="services.html" class="text-neutral-300 hover:text-brand-gold transition pb-1 flex items-center gap-1.5 focus:outline-none">
+                        <span>Services</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] group-hover:rotate-180 transition-transform duration-300 text-brand-gold"></i>
+                    </a>
+                    <div class="absolute top-full left-0 w-64 bg-brand-cardDeep/95 backdrop-blur-md border border-brand-gold/30 rounded-2xl shadow-2xl py-3 px-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="services.html#wedding-films" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-film text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Grand Wedding Films</span>
+                        </a>
+                        <a href="services.html#candid-photography" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-camera-retro text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Candid Photography</span>
+                        </a>
+                        <a href="services.html#pre-wedding" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-heart text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Pre-Wedding Shoots</span>
+                        </a>
+                        <a href="services.html#parties-galas" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-champagne-glasses text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Parties & Galas</span>
+                        </a>
+                        <a href="services.html#heritage-albums" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-book-open text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Heritage Albums</span>
+                        </a>
+                        <a href="services.html#drone-aerial" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-helicopter text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Drone 4K Aerial</span>
+                        </a>
+                        <div class="border-t border-white/10 mt-1 pt-1.5 px-3">
+                            <a href="services.html" class="text-[10px] text-brand-gold hover:text-white font-bold tracking-widest uppercase block text-center py-1">View All Services →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="text-brand-gold hover:text-brand-goldLight transition border-b-2 border-brand-gold pb-1">Gallery</a>
+                <a href="films.html" class="text-neutral-300 hover:text-brand-gold transition pb-1">Films</a>
+            </nav>
+
+            <!-- Direct Contact Action -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <button onclick="toggleModal(true)" class="gold-btn-gradient text-black font-semibold text-xs uppercase tracking-wider px-6 py-3 rounded-full shadow-lg shadow-brand-gold/20 hover:scale-105 transition transform">
+                    <i class="fa-solid fa-calendar-check mr-1.5"></i> Direct Connect
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="lg:hidden text-white hover:text-brand-gold p-2 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-brand-cardDark border-b border-brand-gold/20 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
+                <a href="index.html" class="text-neutral-300 hover:text-brand-gold pl-3">Home</a>
+                <a href="about.html" class="text-neutral-300 hover:text-brand-gold pl-3">About Us</a>
+                
+                <!-- Mobile Services Accordion -->
+                <div class="pl-3 border-l-2 border-white/10">
+                    <div class="flex items-center justify-between text-neutral-300 hover:text-brand-gold cursor-pointer py-1" onclick="toggleMobileServices()">
+                        <span>Services</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform" id="mobileServicesChevron"></i>
+                    </div>
+                    <div id="mobileServicesSubmenu" class="hidden pl-3 pt-2 space-y-2.5 text-xs text-neutral-400">
+                        <a href="services.html#wedding-films" class="block hover:text-brand-gold">Grand Wedding Films</a>
+                        <a href="services.html#candid-photography" class="block hover:text-brand-gold">Candid Photography</a>
+                        <a href="services.html#pre-wedding" class="block hover:text-brand-gold">Pre-Wedding Shoots</a>
+                        <a href="services.html#parties-galas" class="block hover:text-brand-gold">Parties & Galas</a>
+                        <a href="services.html#heritage-albums" class="block hover:text-brand-gold">Heritage Albums</a>
+                        <a href="services.html#drone-aerial" class="block hover:text-brand-gold">Drone 4K Aerial</a>
+                        <a href="services.html" class="block text-brand-gold font-bold pt-1">All Services →</a>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="text-brand-gold border-l-2 border-brand-gold pl-3">Gallery</a>
+                <a href="films.html" class="text-neutral-300 hover:text-brand-gold pl-3">Wedding Films</a>
+                <a href="contact.html" class="text-neutral-300 hover:text-brand-gold pl-3">Contact</a>
+                <button onclick="toggleModal(true); toggleMobileNav();" class="gold-btn-gradient text-black font-bold py-3 rounded-full text-center mt-2 shadow-md">
+                    Connect With Us
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="relative py-14 sm:py-20 bg-gradient-to-b from-black via-[#141009] to-brand-dark border-b border-brand-gold/20 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <span class="inline-block text-brand-gold uppercase text-[10px] sm:text-xs tracking-[0.3em] font-semibold mb-2 border border-brand-gold/30 px-3.5 py-1 rounded-full bg-black/50">
+                Visual Anthology
+            </span>
+            <h1 class="font-serif text-3xl sm:text-6xl text-white font-bold tracking-tight mt-2">
+                Moments <span class="gold-gradient-text">Eternalized</span>
+            </h1>
+            <div class="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            <p class="text-neutral-400 text-xs sm:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+                Browse our combined mosaic of royal wedding rituals, destination pre-weddings, energetic party celebrations, and heirloom portraits.
+            </p>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8">
+                <button onclick="filterGallery('all')" class="filter-btn active text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-brand-gold/40 text-neutral-300 transition duration-300">
+                    All Works
+                </button>
+                <button onclick="filterGallery('wedding')" class="filter-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-brand-gold/40 text-neutral-300 transition duration-300 hover:border-brand-gold hover:text-white">
+                    Weddings
+                </button>
+                <button onclick="filterGallery('pre-wedding')" class="filter-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-brand-gold/40 text-neutral-300 transition duration-300 hover:border-brand-gold hover:text-white">
+                    Pre-Wedding
+                </button>
+                <button onclick="filterGallery('parties')" class="filter-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-brand-gold/40 text-neutral-300 transition duration-300 hover:border-brand-gold hover:text-white">
+                    Parties & Galas
+                </button>
+                <button onclick="filterGallery('details')" class="filter-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-brand-gold/40 text-neutral-300 transition duration-300 hover:border-brand-gold hover:text-white">
+                    Details & Decor
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combined Responsive Masonry Mosaic Gallery Section (Wide Margins & 5px Smaller Proportions) -->
+    <section class="py-12 sm:py-20 bg-brand-dark relative">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-10 lg:px-16">
+            
+            <div class="masonry-columns" id="galleryContainer">
+                
+                <!-- Item 1: Portrait Wedding -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="wedding" onclick="openPhotoModal('gallery/image_1.jpg.jpeg', 'Royal Heritage Bride', 'Royal Wedding')">
+                    <img src="gallery/image_1.jpg.jpeg" alt="Royal Heritage Bride" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Royal Wedding</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Royal Heritage Bride</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Landscape Wedding Ritual -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="wedding" onclick="openPhotoModal('gallery/image_2.jpg.jpeg', 'Palace Lake Vows', 'Traditional Rituals')">
+                    <img src="gallery/image_2.jpg.jpeg" alt="Palace Lake Vows" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Traditional Rituals</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Palace Lake Vows</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Party Celebration -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="parties" onclick="openPhotoModal('gallery/image_3.jpg.jpeg', 'The Sangeet Night Extravaganza', 'Cocktail & Parties')">
+                    <img src="gallery/image_3.jpg.jpeg" alt="The Sangeet Night Extravaganza" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Cocktail & Parties</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">The Sangeet Night Extravaganza</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Details & Jewelry -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="details" onclick="openPhotoModal('gallery/image_4.jpg.jpeg', 'Diamond & Solitaire Intimates', 'Jewelry & Details')">
+                    <img src="gallery/image_4.jpg.jpeg" alt="Diamond & Solitaire Intimates" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Jewelry & Details</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Diamond & Solitaire Intimates</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Pre-Wedding Candid -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="pre-wedding" onclick="openPhotoModal('gallery/image_5.jpg.jpeg', 'Sunset Dune Whispers', 'Pre-Wedding Romance')">
+                    <img src="gallery/image_5.jpg.jpeg" alt="Sunset Dune Whispers" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Pre-Wedding Romance</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Sunset Dune Whispers</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Decor & Mandap -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="details" onclick="openPhotoModal('gallery/image_6.jpg.jpeg', 'The Floral Mandap Grandeur', 'Decor & Ambience')">
+                    <img src="gallery/image_6.jpg.jpeg" alt="The Floral Mandap Grandeur" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Decor & Ambience</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">The Floral Mandap Grandeur</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Festive Fireworks & Party -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="parties" onclick="openPhotoModal('gallery/image_7.jpg.jpeg', 'Illuminated Palace Night', 'Celebration Nights')">
+                    <img src="gallery/image_7.jpg.jpeg" alt="Illuminated Palace Night" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Celebration Nights</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Illuminated Palace Night</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Royal Wedding Moments -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="wedding" onclick="openPhotoModal('gallery/image_8.jpg.jpeg', 'Emotional Varmala Exchange', 'Royal Wedding')">
+                    <img src="gallery/image_8.jpg.jpeg" alt="Emotional Varmala Exchange" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Royal Wedding</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Emotional Varmala Exchange</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 9: Pre-Wedding Concept -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="pre-wedding" onclick="openPhotoModal('gallery/image_9.jpg.jpeg', 'Himalayan Ridge Serenade', 'Pre-Wedding Romance')">
+                    <img src="gallery/image_9.jpg.jpeg" alt="Himalayan Ridge Serenade" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Pre-Wedding Romance</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Himalayan Ridge Serenade</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 10: Private Birthday & Party Gala -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="parties" onclick="openPhotoModal('gallery/image_10.jpg.jpeg', 'Milestone Gala Toast', 'Cocktail & Parties')">
+                    <img src="gallery/image_10.jpg.jpeg" alt="Milestone Gala Toast" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Cocktail & Parties</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Milestone Gala Toast</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 11: Decor Detail Lights -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="details" onclick="openPhotoModal('gallery/image_11.jpg.jpeg', 'Fairy Lights Canopy', 'Decor & Ambience')">
+                    <img src="gallery/image_11.jpg.jpeg" alt="Fairy Lights Canopy" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Decor & Ambience</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Fairy Lights Canopy</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 12: Intimate Wedding Portrait -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="wedding" onclick="openPhotoModal('gallery/image_12.jpg.jpeg', 'The Royal Couple Glance', 'Royal Wedding')">
+                    <img src="gallery/image_12.jpg.jpeg" alt="The Royal Couple Glance" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Royal Wedding</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">The Royal Couple Glance</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 13: Added 13th Photo -->
+                <div class="masonry-item group relative overflow-hidden rounded-xl border border-white/10 bg-brand-cardDark cursor-pointer" data-category="wedding" onclick="openPhotoModal('gallery/image_13.jpg.jpeg', 'Sacred Phera Reflections', 'Royal Wedding')">
+                    <img src="gallery/image_13.jpg.jpeg" alt="Sacred Phera Reflections" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                        <div class="flex justify-end">
+                            <span class="w-7 h-7 rounded-full bg-brand-gold/30 backdrop-blur-sm border border-brand-gold/60 text-brand-gold flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block mb-0.5">Royal Wedding</span>
+                            <h4 class="font-serif text-xs sm:text-base text-white font-bold leading-tight">Sacred Phera Reflections</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-12 sm:pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
+                
+                <!-- Column 1: Brand Info -->
+                <div class="space-y-3 sm:space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="logo/logo infinity studio lush.png" alt="logo infinity studio lush" class="h-14 sm:h-20 w-auto object-contain">
+                        <div>
+                            <span class="font-serif text-lg sm:text-2xl tracking-widest text-white font-bold block">INFINITY</span>
+                            <span class="text-[9px] sm:text-[10px] tracking-[0.35em] text-brand-gold font-semibold uppercase block">Studios Lush</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral-400 text-xs leading-relaxed">
+                        Exquisite wedding cinematography, pre-wedding destination shoots, and high-energy celebration photography across India.
+                    </p>
+                    <div class="flex space-x-3 text-neutral-400 text-sm pt-1">
+                        <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-gold hover:text-brand-gold transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-gold hover:text-brand-gold transition"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-gold hover:text-brand-gold transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-serif text-sm sm:text-base font-semibold mb-3 sm:mb-4 tracking-wider">Quick Navigation</h4>
+                    <ul class="space-y-1.5 sm:space-y-2 text-xs uppercase tracking-wider text-neutral-400">
+                        <li><a href="index.html" class="hover:text-brand-gold transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-gold transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-brand-gold transition">Our Services</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-gold transition">Photo Gallery</a></li>
+                        <li><a href="films.html" class="hover:text-brand-gold transition">Cinematic Films</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-gold transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Specialties -->
+                <div class="hidden sm:block">
+                    <h4 class="text-white font-serif text-base font-semibold mb-4 tracking-wider">Specialties</h4>
+                    <ul class="space-y-2 text-xs text-neutral-400">
+                        <li>• Destination Royal Weddings</li>
+                        <li>• Candid Emotional Photography</li>
+                        <li>• 4K Cinematic Trailers & Teasers</li>
+                        <li>• Pre-Wedding Concepts</li>
+                        <li>• High-Profile Birthday & Galas</li>
+                        <li>• Luxury Velvet Keepsake Albums</li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Direct Booking Info -->
+                <div>
+                    <h4 class="text-white font-serif text-sm sm:text-base font-semibold mb-3 sm:mb-4 tracking-wider">Direct Connect</h4>
+                    <div class="space-y-2 text-xs text-neutral-300">
+                        <p><i class="fa-solid fa-phone text-brand-gold mr-2"></i> +91 98765 43210</p>
+                        <p><i class="fa-brands fa-whatsapp text-brand-gold mr-2"></i> +91 98765 43210</p>
+                        <p><i class="fa-solid fa-envelope text-brand-gold mr-2"></i> infinitystudioslush@gmail.com</p>
+                        <p><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Delhi, Dehradun & Pan India</p>
+                    </div>
+                    <button onclick="toggleModal(true)" class="mt-4 w-full gold-btn-gradient text-black font-bold text-xs uppercase tracking-wider py-2.5 rounded-lg transition">
+                        <i class="fa-solid fa-calendar-check mr-1.5"></i> Instant Booking Connect
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-500 gap-3">
+                <p>© 2026 Infinity Studios Lush. All Rights Reserved.</p>
+                <p>Designed for Luxury Visual Storytelling</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Floating Booking Trigger -->
+    <div class="fixed bottom-8 right-4 sm:bottom-16 sm:right-8 z-50 flex flex-col items-end">
+        <!-- Floating Option Popup -->
+        <div id="quickPopup" class="hidden mb-3 bg-brand-cardDark/95 backdrop-blur-md border border-brand-gold/40 rounded-2xl shadow-2xl p-4 w-60 sm:w-64 text-left transition-all duration-300 transform scale-95 origin-bottom-right">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+                <span class="text-xs uppercase tracking-widest text-brand-gold font-bold">Direct Connect</span>
+                <button onclick="toggleQuickOptions()" class="text-neutral-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-2">
+                <a href="https://wa.me/919876543210?text=Hello%20Infinity%20Studios%20Lush,%20I%20want%20to%20avail%20the%2040%25%20discount%20offer%20for%20my%20event" target="_blank" class="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-white text-xs transition">
+                    <i class="fa-brands fa-whatsapp text-[#25D366] text-base"></i>
+                    <div>
+                        <span class="font-medium block text-[#25D366]">Chat on WhatsApp</span>
+                        <span class="text-[9px] text-neutral-400">Instant response</span>
+                    </div>
+                </a>
+                <a href="tel:+919876543210" class="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/30 text-white text-xs transition">
+                    <i class="fa-solid fa-phone text-blue-400 text-xs"></i>
+                    <div>
+                        <span class="font-medium block text-blue-300">Direct Phone Call</span>
+                        <span class="text-[9px] text-neutral-400">+91 98765 43210</span>
+                    </div>
+                </a>
+                <a href="mailto:infinitystudioslush@gmail.com?subject=Booking%20Inquiry%20-%20Infinity%20Studios%20Lush" class="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-brand-gold/15 hover:bg-brand-gold/25 border border-brand-gold/30 text-white text-xs transition">
+                    <i class="fa-solid fa-envelope text-brand-goldLight text-xs"></i>
+                    <div>
+                        <span class="font-medium block text-brand-goldLight">Send Email Inquiry</span>
+                        <span class="text-[9px] text-neutral-400">Detailed quotation</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Trigger Button -->
+        <button onclick="toggleQuickOptions()" class="group relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full gold-btn-gradient text-black shadow-2xl shadow-brand-gold/40 hover:scale-110 active:scale-95 transition-transform duration-300 focus:outline-none" aria-label="Book Now Options">
+            <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5 sm:h-4 sm:w-4">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-goldLight opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-brand-goldDark"></span>
+            </span>
+            <i class="fa-solid fa-calendar-check text-lg sm:text-2xl group-hover:rotate-12 transition-transform"></i>
+        </button>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-brand-cardDark border border-brand-gold/40 rounded-3xl max-w-md w-full p-6 sm:p-8 relative text-center shadow-2xl">
+            <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-neutral-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="w-14 h-14 rounded-full bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center mx-auto text-brand-gold text-2xl mb-4">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <h3 class="font-serif text-xl sm:text-2xl text-white font-bold">Connect With Infinity Studios</h3>
+            <p class="text-neutral-400 text-xs mt-2">Choose your preferred mode of contact to book dates or claim your 40% discount deal.</p>
+
+            <div class="space-y-3 mt-6">
+                <a href="https://wa.me/919876543210?text=Hello%20Infinity%20Studios%20Lush,%20I%20want%20to%20avail%20the%2040%25%20discount%20offer%20for%20my%20event" target="_blank" class="w-full py-3 px-4 rounded-xl bg-[#25D366] text-black font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 hover:bg-[#20ba5a] transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Connect on WhatsApp</span>
+                </a>
+                <a href="tel:+919876543210" class="w-full py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 border border-white/10 transition">
+                    <i class="fa-solid fa-phone text-brand-gold"></i>
+                    <span>Call Us: +91 98765 43210</span>
+                </a>
+                <a href="mailto:infinitystudioslush@gmail.com?subject=Booking%20Inquiry%20-%20Infinity%20Studios%20Lush" class="w-full py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 border border-white/10 transition">
+                    <i class="fa-solid fa-envelope text-brand-gold"></i>
+                    <span>Email Direct Inquiry</span>
+                </a>
+            </div>
+
+            <p class="text-[11px] text-neutral-500 mt-5">Available 7 days a week: 10:00 AM - 9:00 PM IST</p>
+        </div>
+    </div>
+
+    <!-- Photo Zoom Lightbox Modal -->
+    <div id="photoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closePhotoModal(event)">
+        <div class="relative max-w-4xl max-h-[90vh] bg-brand-cardDeep border border-brand-gold/40 rounded-2xl overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            <button onclick="closePhotoModal(event)" class="absolute top-3 right-3 text-white/80 hover:text-white z-10 w-9 h-9 rounded-full bg-black/60 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+            <div class="overflow-hidden flex items-center justify-center bg-black max-h-[75vh]">
+                <img id="photoModalImg" src="" alt="Zoomed Photo" class="max-h-[75vh] w-auto max-w-full object-contain">
+            </div>
+            <div class="p-4 sm:p-5 bg-brand-cardDeep border-t border-white/10 flex justify-between items-center">
+                <div>
+                    <span id="photoModalCategory" class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold block"></span>
+                    <h3 id="photoModalTitle" class="font-serif text-sm sm:text-xl text-white font-bold"></h3>
+                </div>
+                <button onclick="toggleModal(true); closePhotoModal(event);" class="gold-btn-gradient text-black font-semibold text-[10px] sm:text-xs uppercase tracking-wider px-4 py-2 rounded-full shadow transition hover:scale-105">
+                    Book Similar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Handlers -->
+    <script>
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.masonry-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.classList.remove('hidden-item');
+                } else {
+                    item.classList.add('hidden-item');
+                }
+            });
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMobileNav() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+        mobileBtn.addEventListener('click', toggleMobileNav);
+
+        // Mobile Services Accordion Toggle
+        function toggleMobileServices() {
+            const submenu = document.getElementById('mobileServicesSubmenu');
+            const chevron = document.getElementById('mobileServicesChevron');
+            submenu.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+        }
+
+        // Quick Options Popup Toggle
+        function toggleQuickOptions() {
+            const popup = document.getElementById('quickPopup');
+            popup.classList.toggle('hidden');
+        }
+
+        // Full Modal Toggle
+        function toggleModal(show) {
+            const modal = document.getElementById('bookingModal');
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Photo Lightbox Zoom Handler
+        function openPhotoModal(src, title, category) {
+            const modal = document.getElementById('photoModal');
+            const img = document.getElementById('photoModalImg');
+            const titleEl = document.getElementById('photoModalTitle');
+            const catEl = document.getElementById('photoModalCategory');
+            
+            img.src = src;
+            titleEl.textContent = title;
+            catEl.textContent = category;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePhotoModal(event) {
+            if (event) event.stopPropagation();
+            const modal = document.getElementById('photoModal');
+            const img = document.getElementById('photoModalImg');
+            img.src = '';
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Keyboard ESC key handler for modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePhotoModal();
+                toggleModal(false);
+            }
+        });
+    </script>
+</body>
+</html>
