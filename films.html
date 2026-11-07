@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Films | Infinity Studios Lush</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4A359',
+                            goldLight: '#ECC880',
+                            goldLighter: '#F6E3B4',
+                            goldDark: '#9A6D2C',
+                            dark: '#080808',
+                            cardDark: '#121212',
+                            cardDeep: '#161616',
+                            cream: '#FAF7F2',
+                            borderDark: '#262626'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F6E3B4 0%, #D4A359 50%, #9A6D2C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-btn-gradient {
+            background: linear-gradient(135deg, #ECC880 0%, #D4A359 60%, #9A6D2C 100%);
+        }
+
+        .gold-btn-gradient:hover {
+            background: linear-gradient(135deg, #F6E3B4 0%, #ECC880 60%, #D4A359 100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brand-dark text-neutral-300 font-sans antialiased overflow-x-hidden selection:bg-brand-gold selection:text-black">
+
+    <!-- Top Announcement Bar -->
+    <div
+        class="bg-gradient-to-r from-black via-[#16130d] to-black border-b border-brand-gold/20 text-[11px] sm:text-xs py-2 px-3 sm:px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-2">
+            <div class="flex items-center space-x-3 sm:space-x-4 text-neutral-400">
+                <span><i class="fa-solid fa-phone text-brand-gold mr-1"></i> +91 98765 43210</span>
+                <span class="text-neutral-600">|</span>
+                <span><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Delhi NCR & Worldwide</span>
+            </div>
+            <div class="flex items-center space-x-2 sm:space-x-3 text-neutral-400">
+                <span class="text-brand-goldLight font-medium">40% Off + 2% Referral Deal</span>
+                <a href="about.html" class="underline text-brand-gold hover:text-white transition">Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-black/95 backdrop-blur-md border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 sm:h-28 md:h-32 flex items-center justify-between">
+
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center space-x-2.5 sm:space-x-4 group py-1">
+                <img src="logo/logo infinity studio lush.png" alt="logo infinity studio lush"
+                    class="h-14 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(212,163,89,0.35)]">
+                <div class="flex flex-col justify-center">
+                    <span
+                        class="font-serif text-lg sm:text-2xl md:text-3xl tracking-[0.18em] text-white font-bold group-hover:text-brand-goldLight transition leading-tight">INFINITY</span>
+                    <span
+                        class="text-[9px] sm:text-xs tracking-[0.35em] text-brand-gold font-semibold uppercase">Studios
+                        Lush</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium">
+                <a href="index.html" class="text-neutral-300 hover:text-brand-gold transition pb-1">Home</a>
+                <a href="about.html" class="text-neutral-300 hover:text-brand-gold transition pb-1">About</a>
+
+                <!-- Services Dropdown -->
+                <div class="relative group py-6">
+                    <a href="services.html"
+                        class="text-neutral-300 hover:text-brand-gold transition pb-1 flex items-center gap-1.5 focus:outline-none">
+                        <span>Services</span>
+                        <i
+                            class="fa-solid fa-chevron-down text-[9px] group-hover:rotate-180 transition-transform duration-300 text-brand-gold"></i>
+                    </a>
+                    <div
+                        class="absolute top-full left-0 w-64 bg-brand-cardDeep/95 backdrop-blur-md border border-brand-gold/30 rounded-2xl shadow-2xl py-3 px-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="services.html#wedding-films"
+                            class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-film text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Grand Wedding Films</span>
+                        </a>
+                        <a href="services.html#candid-photography"
+                            class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i
+                                class="fa-solid fa-camera-retro text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Candid Photography</span>
+                        </a>
+                        <a href="services.html#pre-wedding"
+                            class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i class="fa-solid fa-heart text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Pre-Wedding Shoots</span>
+                        </a>
+                        <a href="services.html#parties-galas"
+                            class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i
+                                class="fa-solid fa-champagne-glasses text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Parties & Galas</span>
+                        </a>
+                        <a href="services.html#heritage-albums"
+                            class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i
+                                class="fa-solid fa-book-open text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Heritage Albums</span>
+                        </a>
+                        <a href="services.html#drone-aerial"
+                            class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-neutral-300 hover:text-black hover:bg-brand-gold transition group/item">
+                            <i
+                                class="fa-solid fa-helicopter text-brand-gold group-hover/item:text-black text-xs w-4"></i>
+                            <span class="text-[11px] font-semibold tracking-wider uppercase">Drone 4K Aerial</span>
+                        </a>
+                        <div class="border-t border-white/10 mt-1 pt-1.5 px-3">
+                            <a href="services.html"
+                                class="text-[10px] text-brand-gold hover:text-white font-bold tracking-widest uppercase block text-center py-1">View
+                                All Services →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="text-neutral-300 hover:text-brand-gold transition pb-1">Gallery</a>
+                <a href="films.html"
+                    class="text-brand-gold hover:text-brand-goldLight transition border-b-2 border-brand-gold pb-1">Films</a>
+            </nav>
+
+            <!-- Direct Contact Action -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <button onclick="toggleModal(true)"
+                    class="gold-btn-gradient text-black font-semibold text-xs uppercase tracking-wider px-6 py-3 rounded-full shadow-lg shadow-brand-gold/20 hover:scale-105 transition transform">
+                    <i class="fa-solid fa-calendar-check mr-1.5"></i> Direct Connect
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobileMenuBtn" aria-label="Toggle Navigation"
+                class="lg:hidden text-white hover:text-brand-gold p-2 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu"
+            class="hidden lg:hidden bg-brand-cardDark border-b border-brand-gold/20 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
+                <a href="index.html" class="text-neutral-300 hover:text-brand-gold pl-3">Home</a>
+                <a href="about.html" class="text-neutral-300 hover:text-brand-gold pl-3">About Us</a>
+
+                <!-- Mobile Services Accordion -->
+                <div class="pl-3 border-l-2 border-white/10">
+                    <div class="flex items-center justify-between text-neutral-300 hover:text-brand-gold cursor-pointer py-1"
+                        onclick="toggleMobileServices()">
+                        <span>Services</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform"
+                            id="mobileServicesChevron"></i>
+                    </div>
+                    <div id="mobileServicesSubmenu" class="hidden pl-3 pt-2 space-y-2.5 text-xs text-neutral-400">
+                        <a href="services.html#wedding-films" class="block hover:text-brand-gold">Grand Wedding
+                            Films</a>
+                        <a href="services.html#candid-photography" class="block hover:text-brand-gold">Candid
+                            Photography</a>
+                        <a href="services.html#pre-wedding" class="block hover:text-brand-gold">Pre-Wedding Shoots</a>
+                        <a href="services.html#parties-galas" class="block hover:text-brand-gold">Parties & Galas</a>
+                        <a href="services.html#heritage-albums" class="block hover:text-brand-gold">Heritage Albums</a>
+                        <a href="services.html#drone-aerial" class="block hover:text-brand-gold">Drone 4K Aerial</a>
+                        <a href="services.html" class="block text-brand-gold font-bold pt-1">All Services →</a>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="text-neutral-300 hover:text-brand-gold pl-3">Gallery</a>
+                <a href="films.html" class="text-brand-gold border-l-2 border-brand-gold pl-3">Films</a>
+                <button onclick="toggleModal(true); toggleMobileNav();"
+                    class="gold-btn-gradient text-black font-bold py-3 rounded-full text-center mt-2 shadow-md">
+                    Connect With Us
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section
+        class="relative py-14 sm:py-20 bg-gradient-to-b from-black via-[#141009] to-brand-dark border-b border-brand-gold/20 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <span
+                class="inline-block text-brand-gold uppercase text-[10px] sm:text-xs tracking-[0.3em] font-semibold mb-2 border border-brand-gold/30 px-3.5 py-1 rounded-full bg-black/50">
+                Cinematic Cinema
+            </span>
+            <h1 class="font-serif text-3xl sm:text-6xl text-white font-bold tracking-tight mt-2">
+                Stories in <span class="gold-gradient-text">Motion</span>
+            </h1>
+            <div class="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            <p class="text-neutral-400 text-xs sm:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+                Experience royal destination celebrations, emotional wedding teasers, and high-energy party highlights
+                captured in 4K resolution.
+            </p>
+        </div>
+    </section>
+
+    <!-- 1. FEATURED CINEMATIC PREMIERE (NOW WITH LUXURY CREAM BACKGROUND) -->
+    <section class="py-12 sm:py-20 bg-[#F8F9FA] relative border-b border-neutral-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8">
+            <div class="text-center mb-6">
+                <span
+                    class="text-brand-goldDark text-[10px] sm:text-xs uppercase tracking-[0.25em] font-bold block">Featured
+                    Premiere</span>
+                <h2 class="font-serif text-2xl sm:text-4xl text-neutral-900 font-bold mt-1">Cinematic Masterpiece</h2>
+                <div class="w-12 h-1 bg-brand-gold mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-brand-gold bg-black cursor-pointer shadow-2xl group"
+                onclick="openVideoModal('LXb3EKWsInQ')">
+                <div class="relative aspect-[16/9] sm:aspect-[21/9] overflow-hidden">
+                    <img src="gallery/image_1.jpg.jpeg" alt="Udaipur Royal Wedding Premiere"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-center justify-center">
+                        <div
+                            class="w-14 h-14 sm:w-20 sm:h-20 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-2xl group-hover:scale-110 transition transform">
+                            <i class="fa-solid fa-play text-lg sm:text-2xl ml-1"></i>
+                        </div>
+                    </div>
+                    <span
+                        class="absolute top-3 right-3 sm:top-5 sm:right-5 bg-black/80 backdrop-blur-md text-brand-gold text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-brand-gold/40 font-semibold tracking-wider uppercase">
+                        Master 4K Cinema
+                    </span>
+                </div>
+                <div
+                    class="p-5 sm:p-8 bg-brand-cardDeep flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <span
+                            class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-gold font-semibold">Destination
+                            Wedding Film</span>
+                        <h3
+                            class="font-serif text-xl sm:text-3xl text-white font-bold mt-1 group-hover:text-brand-goldLight transition">
+                            Rohan & Ananya — The Royal Symphony, Udaipur</h3>
+                        <p class="text-neutral-400 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
+                            A magnificent 3-day lake palace celebration documented with drone choreography, symphony
+                            orchestral scores, and tearful unscripted moments.
+                        </p>
+                    </div>
+                    <button
+                        class="gold-btn-gradient text-black font-semibold text-xs uppercase tracking-wider px-6 py-2.5 rounded-full shadow transition hover:scale-105 whitespace-nowrap">
+                        <i class="fa-solid fa-play mr-1.5 text-xs"></i> Play Premiere
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 6 CURATED CINEMATIC FILMS (Films 2 to 7) -->
+    <section class="py-12 sm:py-20 bg-brand-cardDark relative border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                <span
+                    class="text-brand-gold text-[10px] sm:text-xs uppercase tracking-[0.25em] font-semibold">Documentary
+                    Showcase</span>
+                <h2 class="font-serif text-2xl sm:text-5xl text-white font-bold mt-1 sm:mt-2">Selected Wedding
+                    Highlights</h2>
+                <div class="w-12 sm:w-16 h-0.5 bg-brand-gold mx-auto mt-2 sm:mt-4"></div>
+            </div>
+
+            <!-- 2-Column on Mobile, 3-Column on Desktop Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+
+                <!-- Film 2 -->
+                <div class="group rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-brand-cardDeep cursor-pointer shadow-lg hover:border-brand-gold/60 transition"
+                    onclick="openVideoModal('ysz5S6PUM-U')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="gallery/image_5.jpg.jpeg" alt="Pre-Wedding Teaser"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 sm:w-14 sm:h-14 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition transform">
+                                <i class="fa-solid fa-play text-sm sm:text-lg ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span
+                            class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/80 text-brand-gold text-[9px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-gold/30">
+                            Pre-Wedding
+                        </span>
+                    </div>
+                    <div class="p-3 sm:p-5">
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-wider text-brand-gold font-semibold block">Desert
+                            Romance</span>
+                        <h4
+                            class="font-serif text-xs sm:text-lg text-white font-bold leading-tight mt-1 group-hover:text-brand-goldLight transition line-clamp-1">
+                            Sameer & Meera — Dunes of Jaisalmer</h4>
+                        <p class="hidden sm:block text-neutral-400 text-xs mt-2 leading-relaxed">
+                            A concept cinematic romance film shot along the sunset desert horizons and heritage Havelis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 3 -->
+                <div class="group rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-brand-cardDeep cursor-pointer shadow-lg hover:border-brand-gold/60 transition"
+                    onclick="openVideoModal('jNQXAC9IVRw')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="gallery/image_3.jpg.jpeg" alt="Sangeet Party Film"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 sm:w-14 sm:h-14 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition transform">
+                                <i class="fa-solid fa-play text-sm sm:text-lg ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span
+                            class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/80 text-brand-gold text-[9px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-gold/30">
+                            Cocktail Gala
+                        </span>
+                    </div>
+                    <div class="p-3 sm:p-5">
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-wider text-brand-gold font-semibold block">Party
+                            Highlights</span>
+                        <h4
+                            class="font-serif text-xs sm:text-lg text-white font-bold leading-tight mt-1 group-hover:text-brand-goldLight transition line-clamp-1">
+                            The Sangeet Extravaganza Delhi</h4>
+                        <p class="hidden sm:block text-neutral-400 text-xs mt-2 leading-relaxed">
+                            Multi-cam high energy stage performances, laser shows, and champagne toasts captured at 60
+                            FPS.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 4 -->
+                <div class="group rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-brand-cardDeep cursor-pointer shadow-lg hover:border-brand-gold/60 transition"
+                    onclick="openVideoModal('LXb3EKWsInQ')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="gallery/image_2.jpg.jpeg" alt="Sacred Vows Ritual"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 sm:w-14 sm:h-14 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition transform">
+                                <i class="fa-solid fa-play text-sm sm:text-lg ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span
+                            class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/80 text-brand-gold text-[9px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-gold/30">
+                            Sacred Rituals
+                        </span>
+                    </div>
+                    <div class="p-3 sm:p-5">
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-wider text-brand-gold font-semibold block">Wedding
+                            Documentary</span>
+                        <h4
+                            class="font-serif text-xs sm:text-lg text-white font-bold leading-tight mt-1 group-hover:text-brand-goldLight transition line-clamp-1">
+                            Aditya & Shreya — Sacred Vows</h4>
+                        <p class="hidden sm:block text-neutral-400 text-xs mt-2 leading-relaxed">
+                            Gentle acoustic arrangements capturing spiritual phera rituals and tearful vidaai memories.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 5 -->
+                <div class="group rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-brand-cardDeep cursor-pointer shadow-lg hover:border-brand-gold/60 transition"
+                    onclick="openVideoModal('ysz5S6PUM-U')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="gallery/image_9.jpg.jpeg" alt="Mountain Pre-Wedding"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 sm:w-14 sm:h-14 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition transform">
+                                <i class="fa-solid fa-play text-sm sm:text-lg ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span
+                            class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/80 text-brand-gold text-[9px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-gold/30">
+                            Mountain Escape
+                        </span>
+                    </div>
+                    <div class="p-3 sm:p-5">
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-wider text-brand-gold font-semibold block">Destination
+                            Teaser</span>
+                        <h4
+                            class="font-serif text-xs sm:text-lg text-white font-bold leading-tight mt-1 group-hover:text-brand-goldLight transition line-clamp-1">
+                            Kabir & Tara — Above The Clouds, Mussoorie</h4>
+                        <p class="hidden sm:block text-neutral-400 text-xs mt-2 leading-relaxed">
+                            Misty Himalayan ridge aesthetics, vintage styling, and warm cinematic golden hour
+                            highlights.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 6 -->
+                <div class="group rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-brand-cardDeep cursor-pointer shadow-lg hover:border-brand-gold/60 transition"
+                    onclick="openVideoModal('jNQXAC9IVRw')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="gallery/image_7.jpg.jpeg" alt="Festive Night Gala"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 sm:w-14 sm:h-14 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition transform">
+                                <i class="fa-solid fa-play text-sm sm:text-lg ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span
+                            class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/80 text-brand-gold text-[9px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-gold/30">
+                            Grand Baaraat
+                        </span>
+                    </div>
+                    <div class="p-3 sm:p-5">
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-wider text-brand-gold font-semibold block">Drone
+                            & Multi-Cam</span>
+                        <h4
+                            class="font-serif text-xs sm:text-lg text-white font-bold leading-tight mt-1 group-hover:text-brand-goldLight transition line-clamp-1">
+                            The Royal Baaraat Extravaganza</h4>
+                        <p class="hidden sm:block text-neutral-400 text-xs mt-2 leading-relaxed">
+                            Panoramic drone captures of vintage vintage Rolls Royce entries, dhol rhythm, and fireworks
+                            displays.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 7 -->
+                <div class="group rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-brand-cardDeep cursor-pointer shadow-lg hover:border-brand-gold/60 transition"
+                    onclick="openVideoModal('LXb3EKWsInQ')">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="gallery/image_10.jpg.jpeg" alt="Private Milestone Celebration"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 sm:w-14 sm:h-14 rounded-full gold-btn-gradient text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition transform">
+                                <i class="fa-solid fa-play text-sm sm:text-lg ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span
+                            class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/80 text-brand-gold text-[9px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-gold/30">
+                            VIP Celebration
+                        </span>
+                    </div>
+                    <div class="p-3 sm:p-5">
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-wider text-brand-gold font-semibold block">Milestone
+                            Gala</span>
+                        <h4
+                            class="font-serif text-xs sm:text-lg text-white font-bold leading-tight mt-1 group-hover:text-brand-goldLight transition line-clamp-1">
+                            50th Golden Jubilee Gala Night</h4>
+                        <p class="hidden sm:block text-neutral-400 text-xs mt-2 leading-relaxed">
+                            Candid laughs, tribute speeches, and nostalgic documentary portrait interviews cut into an
+                            unforgettable memoir.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BOOKING CTA BANNER -->
+    <section class="py-10 sm:py-20 bg-white relative overflow-hidden border-y border-neutral-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div
+                class="relative bg-brand-cardDeep border-2 border-brand-gold rounded-2xl sm:rounded-3xl p-5 sm:p-14 shadow-2xl overflow-hidden">
+                <div class="max-w-2xl">
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-brand-gold/15 border border-brand-gold/40 px-2.5 py-1 rounded-full mb-3">
+                        <i class="fa-solid fa-video text-brand-gold text-xs"></i>
+                        <span
+                            class="text-[10px] sm:text-xs uppercase tracking-wider text-brand-goldLight font-bold">Cinema
+                            Consultation</span>
+                    </div>
+
+                    <h2 class="font-serif text-2xl sm:text-5xl text-white font-bold leading-tight">
+                        Want Your Story <span class="gold-gradient-text">Told on Film?</span>
+                    </h2>
+                    <p class="text-neutral-300 text-xs sm:text-base mt-3 leading-relaxed font-light">
+                        Book your wedding cinematography dates in advance to lock in customized RED/Sony multi-cam
+                        coverage and exclusive teaser reel delivery.
+                    </p>
+
+                    <div class="mt-6 flex flex-row flex-wrap gap-3 items-center">
+                        <button onclick="toggleModal(true)"
+                            class="gold-btn-gradient text-black font-bold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3 rounded-full shadow-lg hover:scale-105 transition transform">
+                            <i class="fa-solid fa-calendar-check mr-1.5"></i> Direct Date Lock
+                        </button>
+                        <a href="gallery.html"
+                            class="border border-brand-gold/50 text-[#FAF7F2] font-semibold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-6 py-3 rounded-full hover:border-brand-gold transition">
+                            Explore Photos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-12 sm:pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
+
+                <!-- Column 1: Brand Info -->
+                <div class="space-y-3 sm:space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="logo/logo infinity studio lush.png" alt="logo infinity studio lush"
+                            class="h-14 sm:h-20 w-auto object-contain">
+                        <div>
+                            <span
+                                class="font-serif text-lg sm:text-2xl tracking-widest text-white font-bold block">INFINITY</span>
+                            <span
+                                class="text-[9px] sm:text-[10px] tracking-[0.35em] text-brand-gold font-semibold uppercase block">Studios
+                                Lush</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral-400 text-xs leading-relaxed">
+                        Exquisite wedding cinematography, pre-wedding destination shoots, and high-energy celebration
+                        photography across India.
+                    </p>
+                    <div class="flex space-x-3 text-neutral-400 text-sm pt-1">
+                        <a href="#"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-gold hover:text-brand-gold transition"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-gold hover:text-brand-gold transition"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-gold hover:text-brand-gold transition"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-serif text-sm sm:text-base font-semibold mb-3 sm:mb-4 tracking-wider">
+                        Quick Navigation</h4>
+                    <ul class="space-y-1.5 sm:space-y-2 text-xs uppercase tracking-wider text-neutral-400">
+                        <li><a href="index.html" class="hover:text-brand-gold transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-gold transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-brand-gold transition">Our Services</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-gold transition">Photo Gallery</a></li>
+                        <li><a href="films.html" class="hover:text-brand-gold transition">Cinematic Films</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Specialties -->
+                <div class="hidden sm:block">
+                    <h4 class="text-white font-serif text-base font-semibold mb-4 tracking-wider">Specialties</h4>
+                    <ul class="space-y-2 text-xs text-neutral-400">
+                        <li>• Destination Royal Weddings</li>
+                        <li>• Candid Emotional Photography</li>
+                        <li>• 4K Cinematic Trailers & Teasers</li>
+                        <li>• Pre-Wedding Concepts</li>
+                        <li>• High-Profile Birthday & Galas</li>
+                        <li>• Luxury Velvet Keepsake Albums</li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Direct Booking Info -->
+                <div>
+                    <h4 class="text-white font-serif text-sm sm:text-base font-semibold mb-3 sm:mb-4 tracking-wider">
+                        Direct Connect</h4>
+                    <div class="space-y-2 text-xs text-neutral-300">
+                        <p><i class="fa-solid fa-phone text-brand-gold mr-2"></i> +91 98765 43210</p>
+                        <p><i class="fa-brands fa-whatsapp text-brand-gold mr-2"></i> +91 98765 43210</p>
+                        <p><i class="fa-solid fa-envelope text-brand-gold mr-2"></i> infinitystudioslush@gmail.com</p>
+                        <p><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Delhi, Dehradun & Pan India</p>
+                    </div>
+                    <button onclick="toggleModal(true)"
+                        class="mt-4 w-full gold-btn-gradient text-black font-bold text-xs uppercase tracking-wider py-2.5 rounded-lg transition">
+                        <i class="fa-solid fa-calendar-check mr-1.5"></i> Instant Booking Connect
+                    </button>
+                </div>
+
+            </div>
+
+            <div
+                class="pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-500 gap-3">
+                <p>© 2026 Infinity Studios Lush. All Rights Reserved.</p>
+                <p>Designed for Luxury Visual Storytelling</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Floating Booking Trigger -->
+    <div class="fixed bottom-8 right-4 sm:bottom-16 sm:right-8 z-50 flex flex-col items-end">
+        <!-- Floating Option Popup -->
+        <div id="quickPopup"
+            class="hidden mb-3 bg-brand-cardDark/95 backdrop-blur-md border border-brand-gold/40 rounded-2xl shadow-2xl p-4 w-60 sm:w-64 text-left transition-all duration-300 transform scale-95 origin-bottom-right">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+                <span class="text-xs uppercase tracking-widest text-brand-gold font-bold">Direct Connect</span>
+                <button onclick="toggleQuickOptions()" class="text-neutral-400 hover:text-white text-xs"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-2">
+                <a href="https://wa.me/919876543210?text=Hello%20Infinity%20Studios%20Lush,%20I%20want%20to%20inquire%20about%20cinematic%20wedding%20films"
+                    target="_blank"
+                    class="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-white text-xs transition">
+                    <i class="fa-brands fa-whatsapp text-[#25D366] text-base"></i>
+                    <div>
+                        <span class="font-medium block text-[#25D366]">Chat on WhatsApp</span>
+                        <span class="text-[9px] text-neutral-400">Instant response</span>
+                    </div>
+                </a>
+                <a href="tel:+919876543210"
+                    class="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/30 text-white text-xs transition">
+                    <i class="fa-solid fa-phone text-blue-400 text-xs"></i>
+                    <div>
+                        <span class="font-medium block text-blue-300">Direct Phone Call</span>
+                        <span class="text-[9px] text-neutral-400">+91 98765 43210</span>
+                    </div>
+                </a>
+                <a href="mailto:infinitystudioslush@gmail.com?subject=Cinema%20Booking%20Inquiry%20-%20Infinity%20Studios%20Lush"
+                    class="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-brand-gold/15 hover:bg-brand-gold/25 border border-brand-gold/30 text-white text-xs transition">
+                    <i class="fa-solid fa-envelope text-brand-goldLight text-xs"></i>
+                    <div>
+                        <span class="font-medium block text-brand-goldLight">Send Email Inquiry</span>
+                        <span class="text-[9px] text-neutral-400">Detailed quotation</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Trigger Button -->
+        <button onclick="toggleQuickOptions()"
+            class="group relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full gold-btn-gradient text-black shadow-2xl shadow-brand-gold/40 hover:scale-110 active:scale-95 transition-transform duration-300 focus:outline-none"
+            aria-label="Book Now Options">
+            <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5 sm:h-4 sm:w-4">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-goldLight opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-brand-goldDark"></span>
+            </span>
+            <i class="fa-solid fa-calendar-check text-lg sm:text-2xl group-hover:rotate-12 transition-transform"></i>
+        </button>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal"
+        class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div
+            class="bg-brand-cardDark border border-brand-gold/40 rounded-3xl max-w-md w-full p-6 sm:p-8 relative text-center shadow-2xl">
+            <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-neutral-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div
+                class="w-14 h-14 rounded-full bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center mx-auto text-brand-gold text-2xl mb-4">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <h3 class="font-serif text-xl sm:text-2xl text-white font-bold">Connect With Infinity Studios</h3>
+            <p class="text-neutral-400 text-xs mt-2">Choose your preferred mode of contact to book dates or discuss your
+                cinema vision.</p>
+
+            <div class="space-y-3 mt-6">
+                <a href="https://wa.me/919876543210?text=Hello%20Infinity%20Studios%20Lush,%20I%20want%20to%20inquire%20about%20cinematic%20wedding%20films"
+                    target="_blank"
+                    class="w-full py-3 px-4 rounded-xl bg-[#25D366] text-black font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 hover:bg-[#20ba5a] transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Connect on WhatsApp</span>
+                </a>
+                <a href="tel:+919876543210"
+                    class="w-full py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 border border-white/10 transition">
+                    <i class="fa-solid fa-phone text-brand-gold"></i>
+                    <span>Call Us: +91 98765 43210</span>
+                </a>
+                <a href="mailto:infinitystudioslush@gmail.com?subject=Cinema%20Booking%20Inquiry%20-%20Infinity%20Studios%20Lush"
+                    class="w-full py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 border border-white/10 transition">
+                    <i class="fa-solid fa-envelope text-brand-gold"></i>
+                    <span>Email Direct Inquiry</span>
+                </a>
+            </div>
+
+            <p class="text-[11px] text-neutral-500 mt-5">Available 7 days a week: 10:00 AM - 9:00 PM IST</p>
+        </div>
+    </div>
+
+    <!-- YouTube Video Modal Player -->
+    <div id="videoModal"
+        class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+        <div
+            class="relative w-full max-w-4xl bg-brand-cardDark border border-brand-gold/40 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl">
+            <button onclick="closeVideoModal()"
+                class="absolute top-2 right-2 text-neutral-400 hover:text-white z-10 w-8 h-8 rounded-full bg-black/60 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <div class="relative aspect-video w-full">
+                <iframe id="videoIframe" class="w-full h-full" src="" title="YouTube Video Player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Handlers -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMobileNav() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+        mobileBtn.addEventListener('click', toggleMobileNav);
+
+        // Mobile Services Accordion Toggle
+        function toggleMobileServices() {
+            const submenu = document.getElementById('mobileServicesSubmenu');
+            const chevron = document.getElementById('mobileServicesChevron');
+            submenu.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+        }
+
+        // Quick Options Popup Toggle
+        function toggleQuickOptions() {
+            const popup = document.getElementById('quickPopup');
+            popup.classList.toggle('hidden');
+        }
+
+        // Full Modal Toggle
+        function toggleModal(show) {
+            const modal = document.getElementById('bookingModal');
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        // YouTube Video Modal Logic
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            iframe.src = '';
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Keyboard ESC key handler for modals
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+                toggleModal(false);
+            }
+        });
+    </script>
+</body>
+
+</html>
